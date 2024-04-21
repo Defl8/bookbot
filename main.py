@@ -28,7 +28,7 @@ def main():
         print(f"{word_count} found in the document.\n")
 
         char_count = count_chars(file_contents)
-        sorted_char_count = dict(sorted(char_count.items(), reverse=True, key=lambda item: item[1]))
+        sorted_char_count = dict(sorted(char_count.items(), reverse=True, key=lambda item: item[1]))  # Sort dict by value
 
         for entry in sorted_char_count:
             if entry.isalpha():
