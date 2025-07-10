@@ -1,3 +1,6 @@
+import sys
+
+
 from stats import (
     get_word_count,
     get_char_count,
@@ -6,6 +9,8 @@ from stats import (
     ValidValue,
 )
 
+BOOK_ARG_IDX: int = 1
+
 
 def get_book_test(book_path: str) -> str:
     with open(book_path, "r") as book:
@@ -13,11 +18,19 @@ def get_book_test(book_path: str) -> str:
 
 
 def main() -> None:
+    args: list[str] = sys.argv
+    if len(args) < 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    book_path: str = args[BOOK_ARG_IDX]
+
     print("============ BOOKBOT ============")
 
-    book_text: str = get_book_test("books/frankenstein.txt")
+    # book_text: str = get_book_test("books/frankenstein.txt")
+    book_text: str = get_book_test(book_path)
 
-    print("Analyzing book found found at books/frankenstein.txt...")
+    print(f"Analyzing book found found at {book_path}...")
     print("----------- Word Count ----------")
 
     word_count: int = get_word_count(book_text)
