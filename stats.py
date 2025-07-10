@@ -25,7 +25,7 @@ def sort_on_int_val(int_val_dict: dict[str, ValidValue]) -> ValidValue:
     return int_val_dict[NUM_KEY]
 
 
-def spread_dict(dictToSpread: dict[str, ValidValue]) -> list[dict[str, ValidValue]]:
+def spread_dict(dictToSpread: dict[str, int]) -> list[dict[str, ValidValue]]:
     spread_dicts: list[dict[str, ValidValue]] = []
     for k, v in dictToSpread.items():
         spread_dicts.append({"char": k, NUM_KEY: v})
@@ -33,7 +33,7 @@ def spread_dict(dictToSpread: dict[str, ValidValue]) -> list[dict[str, ValidValu
 
 
 def sort_n_spread(
-    dictionary: dict[str, ValidValue],
+    dictionary: dict[str, int],
     sort_on: Callable[[dict[str, ValidValue]], ValidValue],
 ) -> list[dict[str, ValidValue]]:
     dicts: list[dict[str, ValidValue]] = spread_dict(dictionary)
